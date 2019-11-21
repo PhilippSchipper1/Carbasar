@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    
+    <Parameter name="hostname" value="philippschipper"
+         override="false"/>
+ 
+ 	<Parameter name="XXpasswd.properties" value="/Users/axel/passwd.properties"
+         override="false"/>
+         
+    <Parameter name="passwd.properties" value="C:/Dev/passwd.properties"
+         override="false"/>
+         
+    <Parameter name="JWT-KEY" value="BesserWasGeneriertesGehtAberAuchSo"
+         override="false"/>
+         
+
+    <Resource
+		name="jdbc/Carbasar"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/Carbasar?autoReconnect=true"
+		username="root"
+		password=""
+		maxActive="10"
+		maxIdle="10"
+		
+		validationQuery="/* ping */"
+		testOnBorrow="true"
+		testWhileIdle="true"
+		timeBetweenEvictionRunsMillis="10000"
+		minEvictableIdleTimeMillis="60000"
+		
+		maxWait="-1" />
+
+
+</Context>
