@@ -1,11 +1,8 @@
 package de.fs.webarch;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Properties;
 
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

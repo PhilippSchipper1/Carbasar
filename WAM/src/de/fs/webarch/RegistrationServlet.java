@@ -12,7 +12,7 @@ import de.fs.webarch.serialize.UserDAO;
 /**
  * Servlet implementation class RegistrationServlet
  */
-@WebServlet("/RegistrationServlet")
+@WebServlet("/Registration")
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -45,9 +45,8 @@ public class RegistrationServlet extends HttpServlet {
 		
 		if(uname!="" && email!="" && pwort !="" && pwortwdh !="" && pwort.equals(pwortwdh)) {
 			
-				UserDAO.registrieren(uname, pwort, email);
-				response.sendRedirect("BesucherTyp.jsp");
-			
+				UserDAO.instance.registrieren(uname, pwort, email);
+				response.sendRedirect("BesucherTyp.jsp");	
 		}
 		else response.sendRedirect("LoginFehler.jsp");
 		

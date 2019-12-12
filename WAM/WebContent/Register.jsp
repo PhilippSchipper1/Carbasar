@@ -9,20 +9,20 @@
 <body>
 <p>Benutzer: <br>
       
-      <form action = "RegistrationServlet" method="post">
-      <input type="text" name="Benutzer" value="">
+      <form action = "Registration" method="post">
+      <input type="text" name="Benutzer">
    
 
     <p>E-Mail: <br>
-      <input type="text" name="E-Mail" value="">
+      <input type="text" name="E-Mail">
     </p>
 
     <p>Passwort: <br>
-        <input type="password" name="Passwort" value="">
+        <input type="password" name="Passwort">
     </p>
 
     <p>Passwort wiederholen: <br>
-        <input type="password" name="Passwort_wdh" value="">
+        <input type="password" name="Passwort_wdh">
     </p>
 
     <p>

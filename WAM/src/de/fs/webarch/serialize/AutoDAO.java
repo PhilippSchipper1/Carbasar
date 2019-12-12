@@ -62,7 +62,7 @@ public class AutoDAO {
 		
 		return autos;
 	}
-	public Auto AutoDetail(int auto_id) throws ClassNotFoundException {
+	public Auto AutoDetail(int auto_id) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -159,10 +159,7 @@ public class AutoDAO {
 			try { stmt.close(); } catch(SQLException e) {}
 			try { con.close(); } catch(SQLException e) {}
 		}
-		return autos;
-		
-		
-	
+		return autos;		
 	}
 	
 }

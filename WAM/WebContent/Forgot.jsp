@@ -7,12 +7,18 @@
 <title>Vergessen</title>
 </head>
 <body>
+<form action="PasswordForgot" method=post>
 	  <p>
-    E-Mail eingeben<br>
-  </p>
-  <p><input type="text" name="E-Mail" value=""><br></p>
-  <p>  <button type="button" onclick="window.alert('E-Mail Link wurde versendet');">Passwort zurücksetzen</button><br></p>
+    Nutzername:<br>
+    <input type="text" name="Nutzer"></input><br>
+    
+    Passwort: <br>
+    <input type="text" name="Passwort" value=""><br>
+    
+    Passwort Wiederholen: <br>
+     <input type="text" name="Passwortwdh" value=""><br>
+   <button type="submit" onclick="window.alert('Passwort wurde aktualisiert');">Passwort zurücksetzen</button><br></p>
 
-  </p>
+ </form>
 </body>
 </html>

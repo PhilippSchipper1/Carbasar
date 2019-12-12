@@ -37,10 +37,10 @@
       			<img src="resources/<%= p.bild %>">
       		</a>
       		<div class="text-block">
-		        <p><%= p.marke %>
+		        <p> <%= p.marke %>
 		        	<%= p.modell %>
-		        	<%= p.leistung %>
-		        	<%= p.kilometer %>
+		        	Leistung (PS)<%= p.leistung %>
+		        	Kilometer<%= p.kilometer %>
 		        </p>
         	</div>
       	</div>

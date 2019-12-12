@@ -1,5 +1,7 @@
 package de.fs.webarch.serialize;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.sql.*;
 
 import de.fs.webarch.ContextListener;
@@ -16,44 +18,65 @@ public class UserDAO {
 		ResultSet rs = null;
 		boolean x = false;
 		
+		
+		
 		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hashInBytes = digest.digest(p.getBytes(StandardCharsets.UTF_8));
+			
+			StringBuilder sb = new StringBuilder();
+			for(byte b : hashInBytes) {
+				sb.append(String.format("%02x", b));
+			}
+			String pw = sb.toString();
+			
 			con = ContextListener.getDataSource().getConnection();
 			String query= "Select Benutzername from User where Benutzername=? and Passwort=?";
 			stmt = con.prepareStatement(query);
 
 			stmt.setString(1, u);
-			stmt.setString(2, p);
+			stmt.setString(2, pw);
 
 			rs= stmt.executeQuery();
 			x = rs.next();
 
 		}
-		catch(SQLException ex) {
+		catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			try { rs.close(); } catch(SQLException ex) {}
-			try { stmt.close(); } catch(SQLException ex) {}
-			try { con.close(); } catch(SQLException ex) {}
+			try { if(rs!=null) rs.close(); }  catch(Exception e) {e.printStackTrace();};
+			try { if(stmt!=null) stmt.close(); }  catch(Exception e) {e.printStackTrace();};
+			try { if(con!=null)con.close(); }  catch(Exception e) {e.printStackTrace();};
 		}
 		return x;
 	}
 
-	public static void registrieren(String u, String p, String e) {
+	public void registrieren(String u, String p, String e) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		
+		
 		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hashInBytes = digest.digest(p.getBytes(StandardCharsets.UTF_8));
+			
+			StringBuilder sb = new StringBuilder();
+			for(byte b : hashInBytes) {
+				sb.append(String.format("%02x", b));
+			}
+			String pw = sb.toString();
+			
 			con = ContextListener.getDataSource().getConnection();
 			
-			String query="Insert into User(Buntzername, Passwort, EMail) Values(?,?,?)";
+			String query="Insert into User Values(NULL,?,?,?)";
 			stmt= con.prepareStatement(query);
 			stmt.setString(1, u);
-			stmt.setString(2, p);
+			stmt.setString(2, pw);
 			stmt.setString(3, e);
 			stmt.executeUpdate();
 			
 	}
-	 catch(SQLException ex) {
+	 catch(Exception ex) {
 		
 	} finally {
 		try { stmt.close(); } catch(SQLException ex) {}
@@ -83,26 +106,41 @@ public class UserDAO {
 		}
 		return u;
 	}
-	public void frage_stellen(int askid, int auto_id, String frage) {
+	public void forgot(String us, String p){
+		
 		Connection con = null;
 		PreparedStatement stmt = null;
 		
+		
 		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hashInBytes = digest.digest(p.getBytes(StandardCharsets.UTF_8));
+			
+			StringBuilder sb = new StringBuilder();
+			for(byte b : hashInBytes) {
+				sb.append(String.format("%02x", b));
+			}
+			String pw = sb.toString();
+			
 			con = ContextListener.getDataSource().getConnection();
-			 String query="Insert into Frage(Fragender, auto_id,Frage) Values(?,?,?)";
+			 String query="UPDATE User "
+			 		+ "Set Passwort=? "
+			 		+ "Where Benutzername=?";
 			 stmt= con.prepareStatement(query);
-			 stmt.setInt(1, askid);
-			 stmt.setInt(2, auto_id);
-			 stmt.setString(3, frage);
+			 stmt.setString(1, pw);
+			 stmt.setString(2, us);
+			 
+			 
 			 stmt.executeUpdate();
 			
 	}
-		catch(SQLException ex) {
+		catch(Exception ex) {
 			
 		} finally {
 			try { stmt.close(); } catch(SQLException ex) {}
 			try { con.close(); } catch(SQLException ex) {}
 		}
 	}
+
 }
 

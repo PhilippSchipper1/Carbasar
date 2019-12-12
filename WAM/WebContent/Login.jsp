@@ -9,7 +9,7 @@
 <body>
 Benutzer: <br>
     
-    <form action = "LoginServlet" method="post">
+    <form action = "Login" method="post">
     <input type="text" name="Benutzer" value="">
 
     <p>Passwort: <br>

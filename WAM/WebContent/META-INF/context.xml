@@ -17,15 +17,15 @@
     <Parameter name="JWT-KEY" value="BesserWasGeneriertesGehtAberAuchSo"
          override="false"/>
          
-
-    <Resource
+		
+		<Resource
 		name="jdbc/Carbasar"
 		auth="Container"
 		type="javax.sql.DataSource"
 		driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/Carbasar?autoReconnect=true"
-		username="root"
-		password=""
+		url="jdbc:mysql://wamprojekt-1.cwaguifsbkbj.us-east-1.rds.amazonaws.com:3306/Carbasar?autoReconnect=true"
+		username="admin"
+		password="Et3GwqhxseK9H4f"
 		maxActive="10"
 		maxIdle="10"
 		
@@ -36,6 +36,4 @@
 		minEvictableIdleTimeMillis="60000"
 		
 		maxWait="-1" />
-
-
 </Context>

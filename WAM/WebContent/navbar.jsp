@@ -1,3 +1,4 @@
+<html>
 <head><style type="text/css">
 /* Add a black background color to the top navigation */
 .topnav {
@@ -32,7 +33,10 @@
 	<jsp:forward page="Login.jsp"/>
 <% } %>
 <div class="topnav">
-	<a href="KauferMain.jsp">Home</a>
-	<a href="LoginServlet?logout=1">Logout</a>
+	<a href="BesucherTyp.jsp">Home</a>
+	<a href="Login?logout=1">Logout</a>
+	<a href="Frage_Antwort.jsp">Fragen und Antworten</a>
+	<a href="Termine_Probefahrt.jsp">Terminübersicht</a>
 </div>
 </body>
+</html>

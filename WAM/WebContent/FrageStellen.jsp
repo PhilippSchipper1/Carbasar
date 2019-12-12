@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"/>
-      <form action="FrageStellenServlet" method="post">
+      <form action="Frage" method="post">
       <p>
       	<input type="text" name="Frage" size="35" height="70" width="70">
       	<input type="hidden" name="autoid" value="<%= request.getParameter("auto_id") %>">
